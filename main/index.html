@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>英文空白產生器</title>
+</head>
+
+<body>
+    <div>
+        <h1>英文空白產生器</h1>
+        <div style="        position: fixed; top: 0; right: 0; padding: 10px; font-weight: bold;">Edit by Yan-Hao,&nbsp <a href="https://github.com/Wang-Yan-Hao/english_space_generator">source code</a> </div>
+        <h3>規則</h3>
+        <p>在英文單字跟中文單字中間加上半形空白。</p>
+        <h3>相關文章</h3>
+        <ul>
+            <li><a href="https://www.hksilicon.com/articles/254527">讓我們吹毛求疵一下：中英文混排時的最佳化狀態 - 香港矽谷</a</li>
+            <li><a href="https://fredjame.com/%E4%B8%AD%E8%8B%B1%E6%96%87%E4%B9%8B%E9%96%93%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E6%9C%89%E7%A9%BA%E6%A0%BC-%E6%88%91%E5%95%8F-12986bf846e9">中英文之間為什麼要有空格？我問。 - 石墨工房8.0</a></li>
+        </ul>
+        
+        <textarea id="input" style="width: 90%; height: 300px;"></textarea>
+        <br>
+        <button onclick="generateSpace()">產生空白</button>
+        <button onclick="copy()">複製產生文章</button>
+    </div>
+    <div id="output" style="padding-top: 10px;"></div>
+    <script>
+        function add_space(text) {
+            const regex1 = /([a-zA-Z]+)([\u4e00-\u9fa5]+)/g;
+            const regex2 = /([\u4e00-\u9fa5]+)([a-zA-Z]+)/g;
+            const step1 = text.replace(regex1, "$1 $2");
+            const step2 = step1.replace(regex2, "$1 $2");
+            return step2;
+        }
+        function generateSpace() {
+            const inputText = document.getElementById("input").value;
+            space_text = add_space(inputText)
+            document.getElementById("output").innerHTML = space_text;
+        }
+        function copy() {
+            const inputText = document.getElementById("output").innerText;
+            navigator.clipboard.writeText(inputText);
+        }
+    </script>  
+</body>
+</html>
