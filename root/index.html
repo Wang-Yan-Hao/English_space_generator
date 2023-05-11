@@ -23,7 +23,7 @@
         <button onclick="generateSpace()">產生空白</button>
         <button onclick="copy()">複製產生文章</button>
     </div>
-    <div id="output" style="padding-top: 10px;"></div>
+    <textarea id="output" style="width: 90%; height: 300px; padding: 10px;" readonly></textarea>
     <script>
         function add_space(text) {
             const regex1 = /([a-zA-Z]+)([\u4e00-\u9fa5]+)/g;
@@ -35,10 +35,10 @@
         function generateSpace() {
             const inputText = document.getElementById("input").value;
             space_text = add_space(inputText)
-            document.getElementById("output").innerHTML = space_text;
+            document.getElementById("output").value = space_text;
         }
         function copy() {
-            const inputText = document.getElementById("output").innerText;
+            const inputText = document.getElementById("output").value;
             navigator.clipboard.writeText(inputText);
         }
     </script>  
