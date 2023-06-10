@@ -9,10 +9,22 @@
 <body>
     <div>
         <h1>英文空白產生器</h1>
-        <div style="        position: fixed; top: 0; right: 0; padding: 10px; font-weight: bold;">Edit by Yan-Hao,&nbsp <a href="https://github.com/Wang-Yan-Hao/english_space_generator">source code</a> </div>
+        <div style=" position: fixed; top: 0; right: 0; padding: 10px; font-weight: bold;">Edit by Yan-Hao,&nbsp <a href="https://github.com/Wang-Yan-Hao/english_space_generator">source code</a> </div>
         <h3>規則</h3>
-        <p>在英文單字跟中文單字中間加上半形空白。</p>
-        <h3>相關文章</h3>
+        <label>
+            <input type="checkbox" id="englist_chinese" checked />
+                在英文單字跟中文單字中間加上半形空白。
+            </label>
+            <br />
+            <label>
+                <input type="checkbox" id="number" checked />
+                在數字前後加上空白。
+            </label>
+            <br />
+            <label>
+                <input type="checkbox" id="parenthesis" checked />
+                在小括弧前後加上空白。
+            </label>
         <ul>
             <li><a href="https://www.hksilicon.com/articles/254527">讓我們吹毛求疵一下：中英文混排時的最佳化狀態 - 香港矽谷</a</li>
             <li><a href="https://fredjame.com/%E4%B8%AD%E8%8B%B1%E6%96%87%E4%B9%8B%E9%96%93%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E6%9C%89%E7%A9%BA%E6%A0%BC-%E6%88%91%E5%95%8F-12986bf846e9">中英文之間為什麼要有空格？我問。 - 石墨工房8.0</a></li>
@@ -24,23 +36,7 @@
         <button onclick="copy()">複製產生文章</button>
     </div>
     <textarea id="output" style="width: 90%; height: 300px; padding: 10px;" readonly></textarea>
-    <script>
-        function add_space(text) {
-            const regex1 = /([a-zA-Z]+)([\u4e00-\u9fa5]+)/g;
-            const regex2 = /([\u4e00-\u9fa5]+)([a-zA-Z]+)/g;
-            const step1 = text.replace(regex1, "$1 $2");
-            const step2 = step1.replace(regex2, "$1 $2");
-            return step2;
-        }
-        function generateSpace() {
-            const inputText = document.getElementById("input").value;
-            space_text = add_space(inputText)
-            document.getElementById("output").value = space_text;
-        }
-        function copy() {
-            const inputText = document.getElementById("output").value;
-            navigator.clipboard.writeText(inputText);
-        }
-    </script>  
+    <script src="index.js"></script>
+
 </body>
 </html>
